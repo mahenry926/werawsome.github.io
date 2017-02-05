@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>We are awsome</title>
+  <style>
+    body {
+      font-family: 'Rochester', cursive;
+      background-image: url("bg.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      overflow: hidden;
+      font-size:2rem;
+    }
+    .overlay {
+      background-color: rgba(0,0,0,0.6);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+    }
+    #wrap {
+      position: relative;
+      z-index: 2;
+      color: white;
+      margin-top: 70px;
+    }
+    #wrap h1,h2 {
+      text-align: center;
+    }
+    #date-part-wrap  {
+      width: 80%;
+      margin: 50px auto;
+    }
+    .date-part {
+      width: 33.33%;
+      float: left;
+      text-align: center;
+      float: left;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Rochester" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="overlay"></div>
+    <div id="wrap">
+      <h1>Mahdi &amp; Mehrnoosh</h1>
+      <h2>Our first Valentine</h2>
+      <div>
+        <div id="date-part-wrap">
+          <h2>We have been together for : </h2>
+          <div class="date-part">
+            <h2 id="days">00</h2>
+            <h2>days</h2>
+          </div>
+          <div class="date-part">
+            <h2 id="hours">00</h2>
+            <h2>hours</h2>
+          </div>
+          <div class="date-part">
+            <h2 id="minutes">00</h2>
+            <h2>minutes</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $(window).on("load", () => {
+      Time('jun,06,2016,12:30:00');
+    });
+
+    const Time = (startDate) => {
+      difference = (new Date() - (new Date(startDate)));
+
+      const days = Math.floor(difference/(60*60*1000*24)*1);
+      const hours = Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+      const minutes = Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+
+      $('#days').html(days);
+      $('#hours').html(hours);
+      $('#minutes').html(minutes);
+        
+      setTimeout(() => { Time('jun,06,2016,12:30:00'); },60000);
+    }
+  </script>
+</body>
